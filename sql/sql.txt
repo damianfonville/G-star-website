@@ -1,0 +1,122 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.4.1
+-- http://www.phpmyadmin.net
+--
+-- Machine: 127.0.0.1
+-- Genereertijd: 06 feb 2014 om 09:57
+-- Serverversie: 5.5.32
+-- PHP-versie: 5.4.19
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Databank: `gstar`
+--
+CREATE DATABASE IF NOT EXISTS `gstar` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gstar`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `artikel`
+--
+
+CREATE TABLE IF NOT EXISTS `artikel` (
+  `artikelnummer` int(5) NOT NULL AUTO_INCREMENT,
+  `naam` varchar(20) NOT NULL,
+  `prijs` decimal(10,2) NOT NULL,
+  `beschrijving` text NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `kleur` varchar(10) NOT NULL,
+  `voorraad` int(4) NOT NULL,
+  `leveranciersnr` int(4) NOT NULL,
+  PRIMARY KEY (`artikelnummer`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Gegevens worden uitgevoerd voor tabel `artikel`
+--
+
+INSERT INTO `artikel` (`artikelnummer`, `naam`, `prijs`, `beschrijving`, `type`, `kleur`, `voorraad`, `leveranciersnr`) VALUES
+(1, 'DAVIN 3D LOOSE TAPER', '169.90', 'De Davin is geïnspireerd op traditionele matrozenbroeken en is voorzien van lage voorzakken op de dij en vierkante achterzakken, die naar de buitennaden zijn verplaatst.\r\n\r\nStevige denim, die dicht is geweven van een warp-garen dat 6 keer is ondergedompeld in indigo.\r\n\r\nLoose Tapered Fit: Losse pasvorm bij de taille, heup en dij, loopt vanaf de knie naar de enkel taps toe. Regular rise voor en achter.\r\nStof: Blight denim. 100% katoen.\r\nFinish: Dark aged', 'jeans', 'indigo', 6, 0),
+(2, '3301 LOW TAPERED', '149.90', 'De G-Star 3301 is een stijlneutrale denim met klassieke 5-pocket-constructie. Deze essentiële denim is ontdaan van alle opsmuk en combineert authentieke details met een sobere styling. Daarmee ontstaat een stevige basis voor elke look.\r\n\r\nLight aged denim met geschraapte en verbleekte plekken op een heldere basis.\r\n\r\nLow Tapered Fit: Losse pasvorm bij de taille, heup en dij, loopt vanaf de knie naar de enkel taps toe. Low rise voor en achter.\r\nStof: Hack denim. 100% katoen.\r\nFinish: Light aged', 'jeans', 'lightblue', 9, 0),
+(3, 'BOWERY UPSTART', '119.90', 'Premium suede and fabric mix\r\nbreathable moulded footbed\r\nhard wearing rubber outsole\r\n\r\n\r\nComposition: 38.38% Cow Leather, 29.44%Suede, 32.18%Cotton\r\nColour: Dk Brn Suede & Canvas w/Combat', 'schoenen', 'brown', 0, 0),
+(4, 'REGULAR T-SHIRT', '21.00', 'T-shirt met diepe V-hals, asymmetrische opzetzak en halsboord van dezelfde stof.\r\nPremium, heather, single jersey.\r\n\r\nMaakt deel uit van de fit-collectie van G-Star. Keuze uit loose, regular of slim fit.\r\nFit: Regular.\r\nStof: Premium heather jersey, 100% biologische katoen. Dit kledingstuk bevat duurzame materialen die G-Star helpt de impact van de kleding op het milieu te minimaliseren.\r\nKleur: Black heather.', 'T-shirt', 'black', 1, 0),
+(5, 'CORRECT DECONSTRUCTE', '143.94', 'Deconstructed denim blazer met dubbele split, opzetzakken en met chambray afgewerkte naden van creek denim met een sterke glans. Niet gevoerd. G-Star RAW Correct vormt de perfecte basis voor elke stadsgarderobe. De formele stedelijke stijl en geraffineerde materialen zijn perfect te combineren met denim.\r\n\r\nSlim fit.\r\nMateriaal: broken twill constructie, 5.7 oz. 100% katoen.\r\nMedium aged', 'jas', 'blue', 0, 0),
+(6, 'CORRECT NOVA BOMBER', '369.90', 'Harrington van een stevige wolmix. Met 3D-mouw, ritszakken en een luxe doorgestikte voering.\r\nOp zeemanskleding geïnspireerde, geweven wolmix.\r\n\r\nG-Star RAW Correct vormt de perfecte basis voor elke stadsgarderobe. De formele stedelijke stijl en geraffineerde materialen zijn perfect te combineren met denim.\r\nFit: Regular.\r\nStof: MN navy wool, 70% wol, 30% polyamide.\r\nKleur: Black', 'jas', 'black', 0, 0),
+(7, 'BOWERY UPSTART', '83.93', 'Premium suede and fabric mix\r\nbreathable moulded footbed\r\nhard wearing rubber outsole\r\n\r\n\r\nComposition: 38.38% Cow Leather, 29.44%Suede, 32.18%Cotton\r\nColour: Dk Brn Suede & Canvas w/Combat', 'schoenen', 'darkbrown', 5, 2),
+(8, 'DASH SWEAT', '39.95', 'Sweatshirt met ronde hals, raglanmouw en contrasterende elleboogstukken. Met V-vormige inset en kraag en manchetten van ribstof. De G-Star ArtBasic collectie combineert oorspronkelijk artwork, geavanceerde technieken, waaronder flock en discharge printing, hoogwaardige katoenen stoffen, en verfijnde stiksels met een moderne pasvorm.\r\n\r\nStraight fit.\r\nMateriaal: Klassieke terry die zacht aanvoelt. 74% katoen en 26% polyester.\r\nChalk', 'sweater', 'Chalk', 0, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `factuur`
+--
+
+CREATE TABLE IF NOT EXISTS `factuur` (
+  `factuurnr` int(11) NOT NULL AUTO_INCREMENT,
+  `artikelnummer` text NOT NULL,
+  `klantnr` int(11) NOT NULL,
+  `datum` date NOT NULL,
+  `betaalddatum` date NOT NULL,
+  PRIMARY KEY (`factuurnr`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Gegevens worden uitgevoerd voor tabel `factuur`
+--
+
+INSERT INTO `factuur` (`factuurnr`, `artikelnummer`, `klantnr`, `datum`, `betaalddatum`) VALUES
+(1, '1,1,3,3,3,3,2,2,2', 1, '2014-01-15', '0000-00-00'),
+(2, '2,3,1,3,2,1,3,2,1,2,3,2', 2, '2014-01-23', '2014-01-23'),
+(3, '2,3,1,4,1,4,1,2,3,1,2', 5, '2014-01-23', '0000-00-00'),
+(4, '5,3,2,1,4,1,2,1,4,5,7,1,1', 6, '2014-01-23', '2014-01-23');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `klanten`
+--
+
+CREATE TABLE IF NOT EXISTS `klanten` (
+  `klantnr` int(10) NOT NULL AUTO_INCREMENT,
+  `vnaam` varchar(10) NOT NULL,
+  `anaam` varchar(15) NOT NULL,
+  `adres` varchar(20) NOT NULL,
+  `postcode` varchar(6) NOT NULL,
+  `stad` varchar(15) NOT NULL,
+  `telnr` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `nieuwsbrief` tinyint(1) NOT NULL,
+  PRIMARY KEY (`klantnr`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Gegevens worden uitgevoerd voor tabel `klanten`
+--
+
+INSERT INTO `klanten` (`klantnr`, `vnaam`, `anaam`, `adres`, `postcode`, `stad`, `telnr`, `email`, `nieuwsbrief`) VALUES
+(1, 'kees', 'wild', 'hoeklaan 4', '3206ks', 'rotterdam', 181420492, 'kees.wild@live.nl', 0),
+(2, 'niels', 'maas', 'klopweg 5', '2019ls', 'amsterdam', 20193928, 'ddwhssh@online.nl', 0),
+(5, 'aad', 'west', 'westlaan 4', '2031wk', 'bergstad', 392919194, 'dass@live.nl', 1),
+(6, 'ed', 'duits', 'berglaan 5', '1032wj', 'spijkenisse', 29420204, 'ed.duits@eggo.com', 0),
+(7, 'damian', 'fonville', 'lange weg 5', '2301wj', 'spijkenisse', 181402945, 'damian.fonville@hotmail.com', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `leveranciers`
+--
+
+CREATE TABLE IF NOT EXISTS `leveranciers` (
+  `leveranciersnr` int(11) NOT NULL AUTO_INCREMENT,
+  `naam` varchar(20) NOT NULL,
+  `adres` varchar(30) NOT NULL,
+  `postcode` varchar(6) NOT NULL,
+  `stad` varchar(15) NOT NULL,
+  `land` varchar(15) NOT NULL,
+  `telnr` int(10) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  PRIMARY KEY (`leveranciersnr`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
